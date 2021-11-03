@@ -5,6 +5,10 @@ export default function Dropdown({ options, onChange }) {
   const [showOptions, setShowOptions] = useState(false);
   const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    setSelectedInd(0);
+  }, [options]);
+
   // close dropdown when clicked outside of it
   useEffect(() => {
     function listener(e) {
