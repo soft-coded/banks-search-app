@@ -1,13 +1,14 @@
-export default function SearchBar({ banks, setBanks }) {
+export default function SearchBar({ curList, setCurList, setPageNo }) {
   function searchBanks(value) {
-    value = value.toUpperCase();
-    let newList = banks.filter(bank => {
+    setPageNo(1);
+    value = value.trim().toUpperCase();
+    let newList = curList.filter(bank => {
       for (let item in bank) {
         if (`${bank[item]}`.includes(value)) return true;
       }
       return false;
     });
-    setBanks(newList);
+    setCurList(newList);
   }
 
   return (

@@ -95,7 +95,8 @@ main {
 .content .bank-info,
 .content .column-names {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr repeat(3, 1fr);
+  grid-template-columns: 1fr 2fr 2fr 1fr 2fr repeat(3, 1fr);
+  gap: 10px;
   padding: var(--box-padding);
 }
 .content .column-names {
