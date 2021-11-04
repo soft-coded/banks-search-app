@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const AppContext = createContext();
 
@@ -11,6 +11,21 @@ const cities = ["DELHI", "MUMBAI", "KOLKATA", "CHENNAI", "BANGALORE"];
 export default function AppContextProvider({ children }) {
   const [city, setCity] = useState(cities[0]);
   const [fullList, setFullList] = useState();
+  const [favList, setFavList] = useState([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("favList"))
+      setFavList(JSON.parse(localStorage.getItem("favList")));
+  }, []);
+
+  function updateFavList(bank, remove = false) {
+    let newList;
+    if (remove) newList = favList.filter(item => item.ifsc !== bank.ifsc);
+    else newList = [...favList, bank];
+
+    setFavList(newList);
+    localStorage.setItem("favList", JSON.stringify(newList));
+  }
 
   return (
     <AppContext.Provider
@@ -20,7 +35,9 @@ export default function AppContextProvider({ children }) {
         city,
         setCity,
         fullList,
-        setFullList
+        setFullList,
+        favList,
+        updateFavList
       }}
     >
       {children}

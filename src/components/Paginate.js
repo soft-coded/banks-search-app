@@ -17,7 +17,6 @@ export default function Paginate() {
 
   useEffect(() => {
     if (!curList) return;
-    console.log(curList[0]);
     let newList = [];
     for (let i = 1; i <= Math.ceil(curList.length / pageSize); i++)
       newList.push(i);

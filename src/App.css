@@ -20,6 +20,12 @@ main {
   flex-direction: column;
   gap: 30px;
 }
+a {
+  color: rgb(0, 157, 248);
+}
+a:visited {
+  color: violet;
+}
 .subheading {
   display: flex;
   align-items: center;
@@ -29,6 +35,15 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.fav-btn {
+  all: inherit;
+  background: var(--box-color);
+  padding: var(--box-padding);
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-radius: var(--box-border-radius);
+  cursor: pointer;
 }
 /* dropdown */
 .dropdown {
@@ -95,10 +110,26 @@ main {
 .content .bank-info,
 .content .column-names {
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr 1fr 2fr repeat(3, 1fr);
+  grid-template-columns: 1fr 2fr 2fr 1fr 2fr repeat(3, 1fr) 1fr;
   gap: 10px;
   padding: var(--box-padding);
 }
 .content .column-names {
   color: #ccc;
+}
+.fa-heart {
+  cursor: pointer;
+  color: red;
+  font-size: 1.1rem;
+}
+/* bank details */
+.bank-details {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home-link {
+  display: block;
+  margin-top: 30px;
 }

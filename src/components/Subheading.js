@@ -2,6 +2,8 @@ import { useAppContext } from "../contexts/AppContext";
 import SearchBar from "./SearchBar";
 import Dropdown from "./Dropdown";
 
+let isFavList = false;
+
 export default function Subheading({
   setPageSize,
   pagesList,
@@ -9,7 +11,7 @@ export default function Subheading({
   setPagesList,
   setPageNo
 }) {
-  const { cities, setCity, pageSizeList, setFullList, fullList } =
+  const { cities, setCity, pageSizeList, setFullList, fullList, favList } =
     useAppContext();
 
   function handleCityChange(newCity) {
@@ -17,7 +19,19 @@ export default function Subheading({
     setFullList(null);
     setPagesList(null);
     setPageSize(pageSizeList[0]);
+    setPageNo(1);
     setCity(newCity);
+  }
+
+  function handleFavBtnClick() {
+    if (isFavList) {
+      isFavList = false;
+      setCurList(fullList);
+      return;
+    }
+    isFavList = true;
+    setPageNo(1);
+    setCurList(favList);
   }
 
   return (
@@ -44,6 +58,9 @@ export default function Subheading({
               }}
             />
           </div>
+          <button className="fav-btn" onClick={handleFavBtnClick}>
+            {isFavList ? "View all" : "View favourites"}
+          </button>
         </>
       )}
     </div>
